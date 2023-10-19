@@ -3,8 +3,8 @@
     "name": "My Express.js App",
     "builds": [
       {
-        "src": "index.js",
-        "handler": "serverless"
+        "src": "index.js"
+        
       }
     ]
   }
