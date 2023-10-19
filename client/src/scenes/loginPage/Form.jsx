@@ -75,7 +75,8 @@ const Form = () => {
 
         );
         const loggedUser = await loggedInResponse.json();
-        // onSubmitProps.resetForm();    //to reset form
+        console.log(loggedUser);
+        onSubmitProps.resetForm();    //to reset form
         if (loggedUser) {
             dispatch(
                 setLogin({    //reduc action/reducer

@@ -41,15 +41,17 @@ export const register = async (req, res) => {
 }
 
 export const login = async (req, res) => {
-    console.log("hello");
+    // console.log("hello");
         try {
         const { email, password } = req.body;
+        console.log(email);
         const user = await User.findOne({ email: email });
         if (!user) {
             res.status(400).json({ message: "User does not exist" });
         }
         else {
             const isMatch = await bcrypt.compare(password, user.password);//checking if passoword is correct
+            console.log(isMatch);
             if (!isMatch) {
                 res.status(400).json({ message: "Invalid Credentials" });
             }
@@ -57,6 +59,7 @@ export const login = async (req, res) => {
                 const token = Jwt.sign({id:user._id},process.env.JWT_SECRET);
                 delete user.password;
                 res.status(200).json({token,user})
+                
 
             }
         }
